@@ -9,7 +9,6 @@ from envrctl.contextmanager import write_file
 # editorconfig-checker-disable
 TEMPLATE = """
 version: 1
-path: .envrc.yml
 
 vars:
   PYTHON_VERSION: '$(cat .python-version)'
