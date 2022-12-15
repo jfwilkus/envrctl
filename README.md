@@ -7,7 +7,7 @@
 ## Installation
 
 ```console
-pip install github.com:jfwilkus/envrctl.git
+pip install git+https://github.com/jfwilkus/envrctl.git@main
 ```
 
 ## Usage
