@@ -1,8 +1,15 @@
 # envrctl
 
+This tool is only helpful if you need to keep `direnv` and `posh-direnv`
+configuration files in sync.
+
 ## Table of Contents
 
 - [Installation](#installation)
+
+## Features
+
+- Single configuration file to manage both `direnv` and `posh-direnv`
 
 ## Installation
 
@@ -12,13 +19,15 @@ pip install git+https://github.com/jfwilkus/envrctl.git@main
 
 ## Usage
 
-### Generate envrc and psenvc files
+### Initialize project for envrctl
 
 ```console
-envrctl generate
+envrctl init
 ```
 
 ### Edit Configuration
+
+Edit the `.envrctl.yml` file.
 
 ```yaml
 version: 1
@@ -28,8 +37,8 @@ vars:
   PYTHON_VERSION: 3.10.5
 ```
 
-### Create envrc files
+### Generate envrc and psenvc files
 
 ```console
-envrctl create
+envrctl generate
 ```
