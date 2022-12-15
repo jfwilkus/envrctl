@@ -3,6 +3,7 @@ Envrctl - manage envrc and psenvrc files in a project,
 """
 import click
 
+from envrctl.cli.initialize import init_envrctl
 from envrctl.console import console
 from envrctl.direnv import DirenvConfig
 from envrctl.psenvrc import PsenvConfig
@@ -31,10 +32,13 @@ def main():
 
 @envrctl.command()
 def generate():
-    """Generates envrc files."""
+    """Generate envrc files for direnv and posh-direnv."""
     psenvrc = PsenvConfig()
     direnv = DirenvConfig()
     psenvrc.save()
     console.print(f"Generated {psenvrc.path}")
     direnv.save()
     console.print(f"Generated {direnv.path}")
+
+
+envrctl.add_command(init_envrctl)
