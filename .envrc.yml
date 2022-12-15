@@ -1,0 +1,36 @@
+version: 1
+path: .envrc.yml
+
+vars:
+  PYTHON_VERSION: '$(cat .python-version)'
+  # RUBY_VERSION: '$(cat .ruby-version)'
+
+# SECRET: gopass/path
+secrets: {}
+
+### direnv specific configuration
+
+# Specify layouts for direnv
+# https://direnv.net/man/direnv-stdlib.1.html#codelayout-lttypegtcode
+
+layouts:
+  - pyenv "${PYTHON_VERSION}"
+  # - pipenv
+  # - node
+  # - go
+
+# Uncomment to define any use statements for direnv
+#uses:
+#  - rbenv
+
+# Should direnv load .env file
+# https://direnv.net/man/direnv-stdlib.1.html#codedotenvifexists-ltdotenvpathgtcode
+dotenv_if_exists: true
+### TODO
+# Manage .python-version file
+#use_pyenv: true
+#python: 3.10.5
+
+# Manage .ruby-version file
+#use_rbenv: true
+#ruby: 3.1.2

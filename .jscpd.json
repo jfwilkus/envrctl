@@ -1,0 +1,11 @@
+{
+  "ignore": [
+    "**/node_modules/**",
+    "**/.git/**",
+    "**/*.md",
+    "**/.direnv/**",
+    "**/.terraform/**",
+    "**/.tox/**",
+    "**/*.svd"
+  ]
+}

@@ -1,0 +1,44 @@
+version: '3'
+
+tasks:
+  default:
+    silent: true
+    cmds:
+      - task --list
+
+  test:
+    cmds:
+      - hatch run pytest tests
+
+  build:
+    cmds:
+      - hatch build
+
+  project:init:
+    desc: Initialize the project
+    cmds:
+      - pip install --upgrade pip
+      - pip install -r requirements.txt
+      - pre-commit install-hooks
+      - pre-commit install
+      - pre-commit run -a
+
+  project:update:
+    desc: Upgrades all project dependencies
+    cmds:
+      - pre-commit autoupdate
+      - pip install --upgrade pip
+      - pur
+      - pip install -r requirements.txt
+
+  project:generate:envrc:
+    desc: Create pyenvrc and envrc
+    run: once
+    cmds:
+      - python -m envrctl generate
+
+  project:pydoc:
+    desc: Run pydoc browser
+    run: once
+    cmds:
+      - python -m pydoc -b
