@@ -17,6 +17,13 @@ configuration files in sync.
 pip install git+https://github.com/jfwilkus/envrctl.git@main
 ```
 
+Or add it to your `requirements.txt`:
+
+```text
+envrctl @ git+https://github.com/jfwilkus/envrctl.git@main
+
+```
+
 ## Usage
 
 ### Initialize project for envrctl
