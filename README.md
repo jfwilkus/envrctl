@@ -1,11 +1,25 @@
+<!-- vale off -->
+
 # envrctl
+
+<!-- vale on -->
 
 This tool is helpful if you need to keep `direnv` and `posh-direnv`
 configuration files in sync.
 
-## Table of Contents
+## Table of contents
 
+<!-- toc -->
+
+- [Features](#features)
+- [Requirements](#requirements)
 - [Installation](#installation)
+- [Usage](#usage)
+  - [Initialize project](#initialize-project)
+  - [Edit configuration](#edit-configuration)
+  - [Generate configuration files](#generate-configuration-files)
+
+<!-- tocstop -->
 
 ## Features
 
@@ -25,18 +39,17 @@ Or add it to your `requirements.txt`:
 
 ```text
 envrctl @ git+https://github.com/jfwilkus/envrctl.git@main
-
 ```
 
 ## Usage
 
-### Initialize project for envrctl
+### Initialize project
 
 ```console
 envrctl init
 ```
 
-### Edit Configuration
+### Edit configuration
 
 Edit the `.envrctl.yml` file.
 
@@ -48,7 +61,7 @@ vars:
   PYTHON_VERSION: 3.10.5
 ```
 
-### Generate envrc and psenvrc files
+### Generate configuration files
 
 ```console
 envrctl generate
