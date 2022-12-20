@@ -1,17 +1,18 @@
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+requires = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
 
 [project]
 name = "envrctl"
+version = "0.0.3"
 description = 'envrc generator'
 readme = "README.md"
 requires-python = ">=3.7"
-license = "MIT"
-keywords = []
+license = { file = "LICENSE" }
+keywords = ["envrc", "psenvrc", "direnv", "posh-env"]
 authors = [{ name = "James Wilkus", email = "jfwilkus@gmail.com" }]
 classifiers = [
-  "Development Status :: 4 - Beta",
+  "License :: OSI Approved :: MIT License",
   "Programming Language :: Python",
   "Programming Language :: Python :: 3.7",
   "Programming Language :: Python :: 3.8",
@@ -22,19 +23,20 @@ classifiers = [
   "Programming Language :: Python :: Implementation :: PyPy",
 ]
 dependencies = ["click", "rich", "jinja2", "pyyaml"]
-dynamic = ["version"]
 
 [project.optional-dependencies]
 dev = [
   "bandit",
   "black",
-  "hatch",
+  "bumpver",
   "ipython",
   "mypy",
+  "pip-tools",
   "pre-commit",
   "pytest",
   "pytest-cov",
   "pytest-mock",
+  "types-PyYAML",
 ]
 
 [project.urls]
@@ -44,17 +46,6 @@ Source = "https://github.com/jfwilkus/envrctl"
 
 [project.scripts]
 envrctl = "envrctl.cli:main"
-
-[tool.hatch.version]
-path = "src/envrctl/__about__.py"
-
-[tool.hatch.envs.default]
-[tool.hatch.envs.default.scripts]
-cov = "pytest --cov-report=term-missing --cov-config=pyproject.toml --cov=envrctl --cov=tests {args}"
-no-cov = "cov --no-cov {args}"
-
-[[tool.hatch.envs.test.matrix]]
-python = ["37", "38", "39", "310", "311"]
 
 [tool.coverage.run]
 branch = true
@@ -76,3 +67,14 @@ select = ["F", "E", "W", "I"]
 [tool.mypy]
 follow_imports = "normal"
 ignore_missing_imports = true
+
+[tool.bumpver]
+current_version = "0.0.3"
+version_pattern = "MAJOR.MINOR.PATCH"
+commit_message = "Bump version {old_version} -> {new_version}"
+commit = true
+tag = true
+push = false
+
+[tool.bumpver.file_patterns]
+"pyproject.toml" = ['current_version = "{version}"', 'version = "{version}"']

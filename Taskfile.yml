@@ -12,7 +12,7 @@ tasks:
 
   build:
     cmds:
-      - hatch build
+      - python -m build
 
   project:init:
     desc: Initialize the project
