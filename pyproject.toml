@@ -12,6 +12,8 @@ license = { file = "LICENSE" }
 keywords = ["envrc", "psenvrc", "direnv", "posh-env"]
 authors = [{ name = "James Wilkus", email = "jfwilkus@gmail.com" }]
 classifiers = [
+  "Development Status :: 4 - Beta",
+  "Environment :: Console",
   "License :: OSI Approved :: MIT License",
   "Programming Language :: Python",
   "Programming Language :: Python :: 3.7",
@@ -29,14 +31,17 @@ dev = [
   "bandit",
   "black",
   "bumpver",
+  "check-manifest",
   "ipython",
   "mypy",
   "pip-tools",
   "pre-commit",
+  "pyroma",
   "pytest",
   "pytest-cov",
   "pytest-mock",
   "types-PyYAML",
+  "twine",
 ]
 
 [project.urls]
@@ -67,6 +72,19 @@ select = ["F", "E", "W", "I"]
 [tool.mypy]
 follow_imports = "normal"
 ignore_missing_imports = true
+
+[tool.check-manifest]
+ignore = [
+  ".editorconfig",
+  ".envrc",
+  ".envrctl.yml",
+  ".pre-commit-config.yaml",
+  "requirements/*.txt",
+  "tox.ini",
+  "tests/*.py",
+  "Taskfile.yml",
+  ".python-version",
+]
 
 [tool.bumpver]
 current_version = "0.0.3"

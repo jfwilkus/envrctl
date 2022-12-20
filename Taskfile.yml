@@ -8,7 +8,7 @@ tasks:
 
   test:
     cmds:
-      - hatch run pytest tests
+      - tox
 
   build:
     cmds:
@@ -22,7 +22,7 @@ tasks:
       - task: project:pip:install:all
       - pre-commit install-hooks
       - pre-commit install
-      - pre-commit run -a
+      - tox -e lint
 
   project:pip:requirements:update:
     desc: Create requirements from pyproject
@@ -54,17 +54,5 @@ tasks:
     cmds:
       - pre-commit autoupdate
       - pip install --upgrade pip
-      - pur
-      - pip install -r requirements.txt
-
-  project:generate:envrc:
-    desc: Create pyenvrc and envrc
-    run: once
-    cmds:
-      - python -m envrctl generate
-
-  project:pydoc:
-    desc: Run pydoc browser
-    run: once
-    cmds:
-      - python -m pydoc -b
+      - task: project:pip:install:app
+      - task: project:pip:install:dev
