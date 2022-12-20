@@ -396,3 +396,4 @@ $RECYCLE.BIN/
 # End of https://www.toptal.com/developers/gitignore/api/git,ruby,linux,macos,puppet,python,ansible,vagrant,windows,terraform,certificates,direnv,powershell
 
 megalinter-reports
+.ruff_cache/
