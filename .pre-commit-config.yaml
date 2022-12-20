@@ -3,19 +3,15 @@ repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.3.0
     hooks:
-      - id: check-ast
+      - id: check-added-large-files
       - id: check-case-conflict
       - id: check-json
       - id: check-merge-conflict
-      - id: check-xml
+      - id: check-toml
       - id: check-yaml
       - id: end-of-file-fixer
-      - id: fix-byte-order-marker
       - id: mixed-line-ending
-      - id: requirements-txt-fixer
       - id: trailing-whitespace
-      - id: check-added-large-files
-        args: ['--maxkb=5000']
 
   - repo: https://github.com/asottile/pyupgrade
     rev: v3.2.2
@@ -27,29 +23,18 @@ repos:
     hooks:
       - id: black
 
-  - repo: https://github.com/pre-commit/mirrors-prettier
-    rev: v3.0.0-alpha.4
-    hooks:
-      - id: prettier
-        files: \.(css|less|scss|json|js|jsx|md|yml|yaml)$
-        args: ['--write']
-
-  - repo: https://github.com/pecigonzalo/pre-commit-shfmt
-    rev: v2.1.0
-    hooks:
-      - id: shell-fmt
-        args: ['-w']
-
-  - repo: https://github.com/pycqa/flake8
-    rev: 5.0.4
-    hooks:
-      - id: flake8
-
   - repo: https://github.com/PyCQA/bandit
     rev: '1.7.4'
     hooks:
       - id: bandit
         args: ['-c', '.bandit.yml']
+
+  - repo: https://github.com/charliermarsh/ruff-pre-commit
+    rev: v0.0.138
+    hooks:
+      - id: ruff
+        args:
+          - --fix
 
   - repo: https://github.com/pycqa/isort
     rev: 5.10.1
@@ -57,56 +42,12 @@ repos:
       - id: isort
         name: isort (python)
 
-  - repo: https://github.com/editorconfig-checker/editorconfig-checker.python
-    rev: 2.6.1
-    hooks:
-      - id: editorconfig-checker
-        alias: ec
-
   - repo: https://github.com/DavidAnson/markdownlint-cli2
     rev: v0.5.1
     hooks:
       - id: markdownlint-cli2
 
-  - repo: https://github.com/bridgecrewio/checkov.git
-    rev: 2.2.75
-    hooks:
-      - id: checkov
-
-  - repo: https://github.com/hadolint/hadolint
-    rev: v2.12.1-beta
-    hooks:
-      - id: hadolint
-
-  # - repo: https://github.com/ansible-community/ansible-lint.git
-  #   rev: v6.8.6
-  #   hooks:
-  #     - id: ansible-lint
-
   - repo: https://github.com/tcort/markdown-link-check.git
     rev: v3.10.3
     hooks:
       - id: markdown-link-check
-
-  - repo: local
-    hooks:
-      - id: shellcheck
-        name: shellcheck
-        entry: shellcheck
-        language: system
-        types:
-          - file
-          - shell
-        exclude_types:
-          - zsh
-
-    # Using local since the following hook is not portable to Windows
-    # https://github.com/antonbabenko/pre-commit-terraform
-
-    # - id: tf_fmt_local
-    #   name: Terraform
-    #   entry: terraform fmt
-    #   language: system
-    #   types:
-    #     - 'terraform'
-    #   files: '\.tf$'
