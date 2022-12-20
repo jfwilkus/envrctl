@@ -21,8 +21,21 @@ classifiers = [
   "Programming Language :: Python :: Implementation :: CPython",
   "Programming Language :: Python :: Implementation :: PyPy",
 ]
-dependencies = ["click", "rich", "jinja2"]
+dependencies = ["click", "rich", "jinja2", "pyyaml"]
 dynamic = ["version"]
+
+[project.optional-dependencies]
+dev = [
+  "bandit",
+  "black",
+  "hatch",
+  "ipython",
+  "mypy",
+  "pre-commit",
+  "pytest",
+  "pytest-cov",
+  "pytest-mock",
+]
 
 [project.urls]
 Documentation = "https://github.com/jfwilkus/envrctl#readme"
@@ -59,3 +72,7 @@ include_trailing_comma = true
 [tool.ruff]
 line-length = 88
 select = ["F", "E", "W", "I"]
+
+[tool.mypy]
+follow_imports = "normal"
+ignore_missing_imports = true

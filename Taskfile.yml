@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 
 tasks:
   default:
@@ -17,11 +17,37 @@ tasks:
   project:init:
     desc: Initialize the project
     cmds:
-      - pip install --upgrade pip
-      - pip install -r requirements.txt
+      - python -m pip install --upgrade pip
+      - python -m pip install pip-tools
+      - task: project:pip:install:all
       - pre-commit install-hooks
       - pre-commit install
       - pre-commit run -a
+
+  project:pip:requirements:update:
+    desc: Create requirements from pyproject
+    cmds:
+      - pip-compile --generate-hashes -o requirements/app.txt pyproject.toml
+      - pip-compile --generate-hashes --extra dev -o requirements/dev.txt pyproject.toml
+
+  project:pip:install:app:
+    desc: Install requirements for app
+    run: once
+    cmds:
+      - pip install -r requirements/app.txt
+
+  project:pip:install:dev:
+    desc: Install requirements for dev
+    run: once
+    cmds:
+      - pip install -r requirements/dev.txt
+
+  project:pip:install:all:
+    desc: Install all requirements for project
+    run: once
+    cmds:
+      - task: project:pip:install:app
+      - task: project:pip:install:dev
 
   project:update:
     desc: Upgrades all project dependencies
