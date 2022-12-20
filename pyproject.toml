@@ -33,10 +33,9 @@ Source = "https://github.com/jfwilkus/envrctl"
 envrctl = "envrctl.cli:main"
 
 [tool.hatch.version]
-path = "envrctl/__about__.py"
+path = "src/envrctl/__about__.py"
 
 [tool.hatch.envs.default]
-dependencies = ["pytest", "pytest-cov", "pytest-mock"]
 [tool.hatch.envs.default.scripts]
 cov = "pytest --cov-report=term-missing --cov-config=pyproject.toml --cov=envrctl --cov=tests {args}"
 no-cov = "cov --no-cov {args}"
