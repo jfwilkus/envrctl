@@ -9,9 +9,7 @@ readme = "README.md"
 requires-python = ">=3.7"
 license = "MIT"
 keywords = []
-authors = [
-  { name = "James Wilkus", email = "jfwilkus@gmail.com" },
-]
+authors = [{ name = "James Wilkus", email = "jfwilkus@gmail.com" }]
 classifiers = [
   "Development Status :: 4 - Beta",
   "Programming Language :: Python",
@@ -23,11 +21,7 @@ classifiers = [
   "Programming Language :: Python :: Implementation :: CPython",
   "Programming Language :: Python :: Implementation :: PyPy",
 ]
-dependencies = [
-  "click",
-  "rich",
-  "jinja2",
-]
+dependencies = ["click", "rich", "jinja2"]
 dynamic = ["version"]
 
 [project.urls]
@@ -42,11 +36,7 @@ envrctl = "envrctl.cli:main"
 path = "envrctl/__about__.py"
 
 [tool.hatch.envs.default]
-dependencies = [
-  "pytest",
-  "pytest-cov",
-  "pytest-mock",
-]
+dependencies = ["pytest", "pytest-cov", "pytest-mock"]
 [tool.hatch.envs.default.scripts]
 cov = "pytest --cov-report=term-missing --cov-config=pyproject.toml --cov=envrctl --cov=tests {args}"
 no-cov = "cov --no-cov {args}"
@@ -57,13 +47,12 @@ python = ["37", "38", "39", "310", "311"]
 [tool.coverage.run]
 branch = true
 parallel = true
-omit = [
-  "envrctl/__about__.py",
-]
+omit = ["envrctl/__about__.py"]
 
 [tool.coverage.report]
-exclude_lines = [
-  "no cov",
-  "if __name__ == .__main__.:",
-  "if TYPE_CHECKING:",
-]
+exclude_lines = ["no cov", "if __name__ == .__main__.:", "if TYPE_CHECKING:"]
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+include_trailing_comma = true
