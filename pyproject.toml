@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "envrctl"
-version = "0.0.3"
+version = "0.0.4"
 description = 'envrc generator'
 readme = "README.md"
 requires-python = ">=3.7"
@@ -87,7 +87,7 @@ ignore = [
 ]
 
 [tool.bumpver]
-current_version = "0.0.3"
+current_version = "0.0.4"
 version_pattern = "MAJOR.MINOR.PATCH"
 commit_message = "Bump version {old_version} -> {new_version}"
 commit = true
